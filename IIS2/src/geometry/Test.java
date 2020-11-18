@@ -15,7 +15,68 @@ public class Test {
 		
 		double result = p.distance(40, 50);
 		System.out.println("Distance between points is: " + result);
-
+		
+		Point p1 = new Point();
+		p1.setX(15);
+		p1.setY(27);
+		p1.setSelected(true);
+		Rectangle r1 = new Rectangle();
+		Line l1 = new Line();
+		Circle c1 = new Circle();
+		
+		// 1. Inicijalizovati x koordinatu tacke p
+		// na vrednost y koordinate tacke p1
+		
+		p.setX(p1.getY());
+		System.out.println("X of p = " + p.getX());
+		
+		// 2. Postaviti za pocetnu tacku linije l1 tacku p, a
+		// za krajnju tacku linije l1 tacku p1
+		
+		l1.setStartPoint(p);
+		l1.setEndPoint(p1);
+		
+		// 3. Postaviti y koordinatu krajnje tacke l1 na 23
+		
+		l1.getEndPoint().setY(23);
+		System.out.println("Y of end point of line l1 = " + l1.getEndPoint().getY());
+		
+		// 4. Inicijalizovati x koordinatu pocetne tacke linije l1
+		// na vrednost y koordinate krajnje tacke linije l1
+		
+		l1.getStartPoint().setX(l1.getEndPoint().getY());
+		System.out.println("X of start point of line l1 = " + l1.getStartPoint().getX());
+		
+		// 5. Postaviti x koordinatu krajnje tacke l1 na vrednost
+		// duzine linije l1 umanjene za vrednost zbira x i y
+		// koordinate pocetne tacke linije l1
+		
+		l1.getEndPoint().setX((int) (l1.length() - (l1.getStartPoint().getX() + l1.getStartPoint().getY())));
+		System.out.println("X of end point of line l1 = " + l1.getEndPoint().getX());
+		
+		// 6. Postaviti x koordinatu tacke gore levo pravougaonika
+		// r1 na vrednost 10 i y koordinatu na vrednost 15
+		
+		r1.setUpperLeftPoint(p);
+		r1.getUpperLeftPoint().setX(10);
+		r1.getUpperLeftPoint().setY(15);
+		System.out.println("X of U.L.P of r1 = " + r1.getUpperLeftPoint().getX());
+		System.out.println("Y of U.L.P of r1 = " + r1.getUpperLeftPoint().getY());
+		
+		// 7. Postaviti centar kruga c1 na koordinate tacke
+		// gore levo od r1
+		
+		c1.setCenter(r1.getUpperLeftPoint());
+		
+		// 8. Postaviti x koordinatu centra kruga c1 na vrednost razlike
+		// povrsine pravougaonika r1 i y koordinate pocetne tacke linije l1
+		
+		r1.setWidth(20);
+		r1.setHeight(30);
+		c1.getCenter().setX(r1.area() - l1.getStartPoint().getY());
+		System.out.println("X of center of c1 = " + c1.getCenter().getX());
+		
+		
 	}
 
 }
