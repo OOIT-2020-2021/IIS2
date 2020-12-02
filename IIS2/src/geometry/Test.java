@@ -104,6 +104,14 @@ public class Test {
 		System.out.println(p2.equals(p1));
 		System.out.println(p2.equals(c2));
 		
+		Donut d = new Donut();
+		System.out.println(d instanceof Donut);
+		System.out.println(d instanceof Circle);
+		System.out.println(d instanceof SurfaceShape);
+		System.out.println(d instanceof Shape);
+		
+		Circle d1 = new Donut(); // dinamicko povezivanje
+		
 	}
 
 }
