@@ -1,5 +1,6 @@
 package geometry;
 
+import java.awt.Color;
 import java.awt.Graphics;
 
 public class Rectangle extends SurfaceShape {
@@ -23,15 +24,28 @@ public class Rectangle extends SurfaceShape {
 		setSelected(selected);
 	}
 	
+	public Rectangle(Point upperLeftPoint, int width, int height, boolean selected, Color color) {
+		this(upperLeftPoint,width,height,selected);
+		this.setColor(color);
+	}
+	
+	public Rectangle(Point upperLeftPoint, int width, int height, boolean selected, Color color, Color innerColor) {
+		this(upperLeftPoint,width,height,selected,color);
+		this.setInnerColor(innerColor);
+	}
+	
 	@Override
 	public void fill(Graphics g) {
-		// TODO Auto-generated method stub
+		g.setColor(getInnerColor());
+		g.fillRect(this.upperLeftPoint.getX()+1, this.upperLeftPoint.getY()+1, this.width-1, this.height-1);
 		
 	}
 
 	@Override
 	public void draw(Graphics g) {
-		// TODO Auto-generated method stub
+		g.setColor(getColor());
+		g.drawRect(this.upperLeftPoint.getX(), this.upperLeftPoint.getY(), this.width, this.height);
+		this.fill(g);
 		
 	}
 	

@@ -1,5 +1,6 @@
 package geometry;
 
+import java.awt.Color;
 import java.awt.Graphics;
 
 public class Circle extends SurfaceShape {
@@ -21,15 +22,30 @@ public class Circle extends SurfaceShape {
 		setSelected(selected);
 	}
 	
+	public Circle(Point center, int radius, boolean selected, Color color) {
+		this(center, radius, selected);
+		this.setColor(color);
+	}
+	
+	public Circle(Point center, int radius, boolean selected, Color color, Color innerColor) {
+		this(center, radius, selected, color);
+		this.setInnerColor(innerColor);
+	}
+	
 	@Override
 	public void fill(Graphics g) {
-		// TODO Auto-generated method stub
+		g.setColor(getInnerColor());
+		g.fillOval(this.center.getX()-this.radius+1, this.center.getY()-this.radius+1,
+				this.radius*2-2, this.radius*2-2);
 		
 	}
 
 	@Override
 	public void draw(Graphics g) {
-		// TODO Auto-generated method stub
+		g.setColor(getColor());
+		g.drawOval(this.center.getX()-this.radius, this.center.getY()-this.radius,
+				this.radius*2, this.radius*2);
+		this.fill(g);
 		
 	}
 	

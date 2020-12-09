@@ -1,5 +1,6 @@
 package geometry;
 
+import java.awt.Color;
 import java.awt.Graphics;
 
 public class Point extends Shape {
@@ -21,8 +22,15 @@ public class Point extends Shape {
 		setSelected(selected);
 	}
 	
+	public Point(int x, int y, boolean selected, Color color) {
+		this(x,y,selected);
+		this.setColor(color);
+	}
+	
 	public void draw(Graphics g) {
-		// TODO Auto-generated method stub
+		g.setColor(getColor());
+		g.drawLine(this.x-2, this.y, this.x+2, this.y);
+		g.drawLine(this.x, this.y-2, this.x, this.y+2);
 		
 	}
 	
