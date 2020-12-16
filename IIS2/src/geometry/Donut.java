@@ -30,6 +30,14 @@ public class Donut extends Circle {
 		this(center, radius, innerRadius, selected, color);
 		this.setInnerColor(innerColor);
 	}
+
+	@Override
+	public int compareTo(Object o) {
+		if (o instanceof Donut) {
+			return (int) (this.area() - ((Donut) o).area());
+		}
+		return 0;
+	}
 	
 	@Override
 	public void fill(Graphics g) {

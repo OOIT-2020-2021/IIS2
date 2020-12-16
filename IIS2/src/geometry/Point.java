@@ -27,6 +27,21 @@ public class Point extends Shape {
 		this.setColor(color);
 	}
 	
+	@Override
+	public int compareTo(Object o) {
+		if(o instanceof Point) {
+			Point pocetak = new Point(0, 0);
+			return (int) (this.distance(pocetak.getX(), pocetak.getY()) - ((Point) o).distance(pocetak.getX(), pocetak.getY()));
+		}
+		return 0;
+	}
+	
+	@Override
+	public void moveBy(int byX, int byY) {
+		this.x = this.x + byX;
+		this.y += byY;
+	}
+	
 	public void draw(Graphics g) {
 		g.setColor(getColor());
 		g.drawLine(this.x-2, this.y, this.x+2, this.y);
@@ -81,5 +96,6 @@ public class Point extends Shape {
 		// (x,y)
 		return "(" + x + "," + y + ")";
 	}
+
 
 }
