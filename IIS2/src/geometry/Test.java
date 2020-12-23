@@ -1,6 +1,7 @@
 package geometry;
 
 import java.util.Arrays;
+import java.util.HashMap;
 
 public class Test {
 
@@ -132,6 +133,30 @@ public class Test {
 		System.out.println("Sortiran niz tacaka");
 		for (int i = 0; i < points.length; i++) {
 			System.out.println(points[i]);
+		}
+		
+		// HashMap
+		HashMap<String, Shape> map = new HashMap<String, Shape>();
+		map.put("point", p1);
+		map.put("rectangle", r1);
+		map.put("Point", p2);
+		
+		System.out.println("point from map is: " + map.get("point"));
+		System.out.println("point from map is: " + map.get("Point"));
+		
+		Point p3 = new Point(40, 40);
+		map.put("point", p3);
+		
+		System.out.println("point from map is: " + map.get("point"));
+		
+		Circle c4 = new Circle(p6, 40);
+		
+		try {
+			c4.setRadius(-150);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			System.out.println("Finally se uvek izvrsava");
 		}
 		
 	}
