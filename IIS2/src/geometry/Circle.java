@@ -60,6 +60,15 @@ public class Circle extends SurfaceShape {
 				this.radius*2, this.radius*2);
 		this.fill(g);
 		
+		if (isSelected()) {
+			g.setColor(Color.BLUE);
+			g.drawRect(this.center.getX()-3, this.center.getY()-3, 6, 6);
+			g.drawRect(this.center.getX()-this.radius-3, this.center.getY()-3, 6, 6);
+			g.drawRect(this.center.getX()+this.radius-3, this.center.getY()-3, 6, 6);
+			g.drawRect(this.center.getX()-3, this.center.getY()-this.radius-3, 6, 6);
+			g.drawRect(this.center.getX()-3, this.center.getY()+this.radius-3, 6, 6);
+		}
+		
 	}
 	
 	public boolean contains(int x, int y) {

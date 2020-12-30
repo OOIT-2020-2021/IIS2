@@ -60,6 +60,14 @@ public class Rectangle extends SurfaceShape {
 		g.drawRect(this.upperLeftPoint.getX(), this.upperLeftPoint.getY(), this.width, this.height);
 		this.fill(g);
 		
+		if (isSelected()) {
+			g.setColor(Color.BLUE);
+			g.drawRect(this.upperLeftPoint.getX()-3, this.upperLeftPoint.getY()-3, 6, 6);
+			g.drawRect(this.upperLeftPoint.getX()+this.width-3, this.upperLeftPoint.getY()-3, 6, 6);
+			g.drawRect(this.upperLeftPoint.getX()-3, this.upperLeftPoint.getY()+this.height-3, 6, 6);
+			g.drawRect(this.upperLeftPoint.getX()+this.width-3, this.upperLeftPoint.getY()+this.height-3, 6, 6);
+		}
+		
 	}
 	
 	public boolean contains(int x, int y) {
